@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import { Provider } from 'react-redux';
 import { store } from './pages/store/store';
 import Home from './pages/Home';
+import Comments from './pages/Comments';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path='home' element={<Home />} />
+          <Route path='/comments' element={<Comments />} />
         </Routes>
       </Provider>
     </>

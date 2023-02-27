@@ -3,6 +3,7 @@ import {
   createSlice,
   createAsyncThunk,
 } from "@reduxjs/toolkit";
+import { postsApi } from "./postsApi";
 
 export const loginUser = createAsyncThunk(
   "user/login",
@@ -66,6 +67,8 @@ export const signupUser = createAsyncThunk(
     }
   }
 );
+
+const gettingPost="https://jsonplaceholder.typicode.com/posts"
 
 const initialState = {
   value: {
@@ -135,5 +138,10 @@ export const userSelector = (state) => state.user.value;
 export const store = configureStore({
   reducer: {
     user: userSlice.reducer,
+    [postsApi.reducerPath]:postsApi.reducer
+
   },
+  middleware:(getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(postsApi.middleware)
+  }
 });
